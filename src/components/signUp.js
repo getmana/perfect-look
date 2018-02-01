@@ -8,7 +8,22 @@ class SignUp extends React.Component {
 	render() {
 		return (
 			<div>
-				Sign Up Page
+                Введите почту:
+                <input type='email'/>
+
+                Введите пароль:
+                <input type='password'/>
+
+                Поддтвердите пароль:
+                <input type='password'/>
+
+                Введите ваше Имя:
+                <input type='text'/>
+
+                Добавить фотографию:
+                <button>Открыть</button>
+
+				<button>Завершить регистрацию</button>
 			</div>
 		)
 	}
