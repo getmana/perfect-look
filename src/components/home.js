@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 import WeightCalculator from "./weightCalculator";
 import MainTextContent from "./mainTextContent";
 import Contacts from "./contactsMain";
@@ -22,7 +22,9 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div><h1>homepage</h1>
+            <div><h><img
+                src='http://bountiful.co.za/Perfectlook_Web/Main_Page/Main_page_top_frame/Top_frame_pictures/PL_logo.jpg'/>
+            </h>
                 <div className="sign-in-block">
                     <ul>
                         <li><Link to="/signin">Войти</Link></li>

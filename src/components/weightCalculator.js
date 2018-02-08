@@ -71,9 +71,9 @@ class WeightCalculator extends React.Component {
 
         let female = document.getElementById('female');
 
-        if (male.checked && this.state.height != '' && female.checked === false) {
+        if (male.checked && this.state.height !== '' && female.checked === false) {
             return this.resultMan()
-        } else if (female.checked && this.state.height != '' && male.checked === false) {
+        } else if (female.checked && this.state.height !== '' && male.checked === false) {
             return this.resultWoman()
         } else if (male.checked === true && female.checked === true) {
             return this.resultError()
@@ -88,7 +88,6 @@ class WeightCalculator extends React.Component {
         return (
             <div className='calculator'>
 
-
                 <button className='go-to-registration'><Link to="/signup">Присоеденится к нам сейчас</Link></button>
 
                 <div>
@@ -97,7 +96,6 @@ class WeightCalculator extends React.Component {
                             return <Inputs key={key} data={input} addtohight={this.addToHeight}/>
                         })
                     }
-
                 </div>
 
                 Ваш пол:

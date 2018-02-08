@@ -8,10 +8,10 @@ class Inputs extends React.Component {
     render() {
         const {data} = this.props;
         return (
-            <div key={data.id} className='cards'>
+            <div key={data.id} className='inputs'>
                 <h2>{data.title}</h2>
-                <input key={data.id} type={data.type} className={data.className}
-                       onChange={this.props.addtohight}/>
+                <input id={data.id} key={data.id} type={data.type} className={data.className}
+                       onChange={this.props.addtohight} />
             </div>
         )
     }

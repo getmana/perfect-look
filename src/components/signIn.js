@@ -2,23 +2,25 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 class SignIn extends React.Component {
-	constructor() {
-		super();
-	}
+    constructor() {
+        super();
+    }
 
-	render() {
-		return (
-			<div>
-				Введите почту:
-				<input type='email'/>
+    render() {
+        return (
+            <div>
+                <form>
+                    Введите почту:
+                    <input type='email'/>
 
-				Введите пароль:
-				<input type='password'/>
+                    Введите пароль:
+                    <input type='password'/>
 
-				<button><Link to="/mainaccount">Войти</Link></button>
-			</div>
-		)
-	}
+                    <button><Link to="/mainaccount">Войти</Link></button>
+                </form>
+            </div>
+        )
+    }
 }
 
 export default SignIn;
