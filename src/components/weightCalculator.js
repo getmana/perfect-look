@@ -16,6 +16,7 @@ class WeightCalculator extends React.Component {
                     title:'Ваш рост:',
                     type:'number',
                     className:'height-value',
+                    onChange:this.addToHeight.bind(this)
                 },
                 {
                     id:1,
@@ -93,7 +94,7 @@ class WeightCalculator extends React.Component {
                 <div>
                     {
                         this.state.inputs.map((input,key)=>{
-                            return <Inputs key={key} data={input} addtohight={this.addToHeight}/>
+                            return <Inputs key={key} data={input} addtohight={input}/>
                         })
                     }
                 </div>

@@ -7,9 +7,10 @@ class Account extends React.Component {
 
 
     render() {
+        const name = this.props.match.params.name;
         return (
             <div >
-                <h2>YOUR ACCOUNT</h2>
+                <h2>YOUR ACCOUNT,{name}</h2>
             </div>
         )
     }

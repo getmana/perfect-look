@@ -11,7 +11,7 @@ class Inputs extends React.Component {
             <div key={data.id} className='inputs'>
                 <h2>{data.title}</h2>
                 <input id={data.id} key={data.id} type={data.type} className={data.className}
-                       onChange={this.props.addtohight} />
+                       onChange={data.onChange}/>
             </div>
         )
     }
