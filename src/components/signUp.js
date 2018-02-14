@@ -2,39 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import Inputs from "./inputs";
 import {Link} from 'react-router-dom';
-import Account from "./account/mainAccount";
+import Account from "./account/account";
+import Footer from './footer';
 
 class SignUp extends React.Component {
     constructor() {
         super();
         this.state = {
-            usersData: [],
-            inputs: [
-                {
-                    id: 'email-input',
-                    type: 'email',
-                    title: 'Введите e-mail',
-                    className: 'email-input',
-                },
-                {
-                    id: 'password-input',
-                    type: 'password',
-                    title: 'Введите пароль',
-                    className: 'password-input',
-                },
-                {
-                    id: 'check-password-input',
-                    type: 'password',
-                    title: 'Повторите пароль',
-                    className: 'check-password-input',
-                },
-                {
-                    id: 'name-input',
-                    type: 'text',
-                    title: 'Введите ваше имя',
-                    className: 'name-input',
-                }
-            ],
+            usersData: []
         };
         this.getTest = this.getTest.bind(this);
         this.postSignIn = this.postSignIn.bind(this);
@@ -68,7 +43,7 @@ class SignUp extends React.Component {
     postSignIn() {
         const { history } = this.props;
         let password = document.getElementById('password-input');
-        let checkPassword = document.getElementById('check-password-input');
+        let checkPassword = document.getElementById('confirm-password-input');
         let name = document.getElementById('name-input');
         let email = document.getElementById('email-input');
 
@@ -95,19 +70,26 @@ class SignUp extends React.Component {
     render() {
         return (
             <div>
-                {
-                    this.state.inputs.map((input, key) => {
-                        return <Inputs id={input} key={key} data={input} classname={input}/>
-                    })
-                }
-                Добавить фотографию:
-                <button onClick={() => {
-                    this.getTest()
-                }}>Открыть</button>
-                <button onClick={() => {this.postSignIn()
-                }}>
-                    Завершить регистрацию
-                </button>
+                <div className="logo-slogan-box">
+                    <Link to="/" className="logo"><img src={require('../img/logo1.png')} /></Link>
+                    <p className="slogan">Начните Ваше путешествие к идеальному телу сегодня!</p>
+                </div>
+                <div className="registration-page-content">
+                    <h1 className="title">Форма регистрации</h1>
+                    <form className="registration-form">
+                        <input id="name-input" type="text" placeholder="Введите ваше имя" className="name-input" />
+                        <input id="email-input" type="email" placeholder="Введите e-mail" className="email-input" />
+                        <input id="password-input" type="password" placeholder="Введите пароль" className="password-input" />
+                        <input id="check-password-input" type="password" placeholder="Повторите пароль" className="check-password-input" />
+                        <label>Добавить фотографию:</label>
+                        <button className="brown-btn" onClick={() => {
+                            this.getTest()
+                            }}>Загрузить</button>
+                        <button className="red-btn" onClick={() => {this.postSignIn()
+                             }}>Завершить регистрацию</button>
+                    </form> 
+                </div>
+                <Footer />
             </div>
         )
     }

@@ -1,47 +1,45 @@
 import React from 'react';
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
-import WeightCalculator from "./weightCalculator";
-import MainTextContent from "./mainTextContent";
-import Contacts from "./contactsMain";
+import MainTextContent from './mainTextContent';
+import Footer from './footer';
+import SignIn from './signIn';
 
 
 class Home extends React.Component {
     constructor() {
-        super();
-        this.state = {
-            toggle: false,
-        };
-        this.toggleCalc = this.toggleCalc.bind(this);
-    }
-
-    toggleCalc() {
-        this.setState({
-            toggle: !this.state.toggle
-        })
-    }
+        super();  
+    } 
 
     render() {
         return (
-            <div><h><img
-                src='http://bountiful.co.za/Perfectlook_Web/Main_Page/Main_page_top_frame/Top_frame_pictures/PL_logo.jpg'/>
-            </h>
-                <div className="sign-in-block">
-                    <ul>
-                        <li><Link to="/signin">Войти</Link></li>
-                        <li><Link to="/signup">Регистрация</Link></li>
-                    </ul>
+            <div>
+                <div className="homepage-header">
+                    <div className="logo-slogan-box">
+                        <Link to="/" className="logo"><img src={require('../img/logo1.png')} /></Link>
+                        <p className="slogan">Начните Ваше путешествие к идеальному телу сегодня!</p>
+                    </div>
+                    <div className="sign-in-block">
+                        <SignIn />
+                        <Link to="/signup" className="sign-in-block-link">Регистрация</Link>
+                    </div>
                 </div>
-                {
-                    this.state.toggle ? <WeightCalculator close={this.toggleCalc}/> :
-                        <div className='calculator'>
-                            <button onClick={() => {
-                                this.toggleCalc()
-                            }}>Расчитать идеальный вес!
-                            </button>
-                        </div>
-                }
                 <MainTextContent/>
-                <Contacts/>
+                <div className="about-program-block">
+                    <div className="about-program-block-left big-block">
+                        <h1 className="block-title">Здоровое питание</h1>
+                        <p className="block-content">В основу программы заложены принципы правильного питания,
+                         которые наладят обмен веществ и обеспечат организм всеми необходимыми для здоровья и красивого тела
+                         элементами</p>
+                        <Link to="/" className="block-link">далее /</Link>
+                    </div>
+                    <div className="about-program-block-right big-block">
+                        <h1 className="block-title">Не теряй мотивацию!</h1>
+                        <p className="block-content">Секреты от топ-тренеров, советы, полезная информация. После каждого уровня
+                         мы будем проверять твои результаты (фото, кг и см). Главное - не останавливаться на полпути!</p>
+                        <Link to="/" className="block-link">далее /</Link>
+                    </div>
+                </div>
+                <Footer />
             </div>
         )
     }

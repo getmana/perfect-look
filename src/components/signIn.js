@@ -10,13 +10,9 @@ class SignIn extends React.Component {
         return (
             <div>
                 <form>
-                    Введите почту:
-                    <input type='email'/>
-
-                    Введите пароль:
-                    <input type='password'/>
-
-                    <button><Link to="/mainaccount">Войти</Link></button>
+                    <input type='email' placeholder='Ваш email'/>
+                    <input type='password' placeholder='Ваш пароль'/>
+                    <button>Войти</button>
                 </form>
             </div>
         )

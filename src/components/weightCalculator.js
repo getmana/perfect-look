@@ -13,29 +13,30 @@ class WeightCalculator extends React.Component {
             inputs:[
                 {
                     id:0,
-                    title:'Ваш рост:',
+                    placeholder:'Ваш рост',
                     type:'number',
                     className:'height-value',
                 },
                 {
                     id:1,
-                    title:'Ваш возраст:',
+                    placeholder:'Ваш возраст',
                     type:'number',
                     className:'age-value',
                 },
                 {
                     id:2,
-                    title:'Обхват запястья:',
+                    placeholder:'Обхват запястья',
                     type:'number',
                     className:'wrist-value'
                 },
                 {
                     id:3,
-                    title:'Ваш текущий вес:',
+                    placeholder:'Ваш вес',
                     type:'number',
                     className:'current-weight-value'
                 }
-            ]
+            ],
+            isBtnClicked: false
         };
         this.addToHeight = this.addToHeight.bind(this);
     }
@@ -61,7 +62,7 @@ class WeightCalculator extends React.Component {
 
     resultError() {
         this.setState({
-            result: 'TI TYPOI?'
+            result: 'Error'
         })
     }
 
@@ -70,6 +71,10 @@ class WeightCalculator extends React.Component {
         let male = document.getElementById('male');
 
         let female = document.getElementById('female');
+
+        this.setState({
+            isBtnClicked: true
+        });
 
         if (male.checked && this.state.height !== '' && female.checked === false) {
             return this.resultMan()
@@ -85,41 +90,50 @@ class WeightCalculator extends React.Component {
 
 
     render() {
-        return (
-            <div className='calculator'>
-
-                <button className='go-to-registration'><Link to="/signup">Присоеденится к нам сейчас</Link></button>
-
-                <div>
-                    {
-                        this.state.inputs.map((input,key)=>{
-                            return <Inputs key={key} data={input} addtohight={this.addToHeight}/>
-                        })
-                    }
+        if (this.state.isBtnClicked) {
+            return (
+                <div className="calculator-wrapper">
+                    <div className="calculator">
+                        <h1 className="calc-title">Калькулятор идеального веса</h1>
+                        <p className="result">Ваш идеальный вес: 
+                            {this.state.result}
+                        </p>
+                        <button className="close-btn" onClick={() => {
+                        this.props.close()
+                        }}>X
+                    </button>
+                    </div>     
                 </div>
-
-                Ваш пол:
-                М:
-                <input type='checkbox' id='male'/>
-
-                Ж:
-                <input type='checkbox' id='female'/>
-
-                <button onClick={() => {
-                    this.submit()
-                }}>Расчитать!
-                </button>
-
-                <span className='result'>
-                    Идеальный вес:{this.state.result}
-                </span>
-
-                <button onClick={() => {
-                    this.props.close()
-                }}>Закрыть
-                </button>
-            </div>
-        )
+            )
+        }   else { return(
+                <div className="calculator-wrapper">
+                    <div className="calculator">
+                        <h1 className="calc-title">Калькулятор идеального веса</h1>
+                        <div>
+                            {
+                                this.state.inputs.map((input,key)=>{
+                                return <Inputs key={key} data={input} addtohight={this.addToHeight}/>
+                                    })
+                            }
+                        </div>
+                        <div className="gender">
+                            <span>Ваш пол: </span>
+                            <label>Ж</label><input name='gender' type='radio' id='female' defaultChecked="checked"/>
+                            <label>М</label><input name='gender' type='radio' id='male'/>
+                            </div>
+                        <button className="red-btn" onClick={() => {
+                            this.submit()
+                            }}>Рассчитать!
+                        </button>
+                        <button className="close-btn" onClick={() => {
+                            this.props.close()
+                            }}>X
+                        </button>
+                    </div>
+                </div>
+                               
+            )
+        }
     }
 }
 

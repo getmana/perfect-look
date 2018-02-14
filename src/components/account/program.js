@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Settings extends React.Component {
+class Program extends React.Component {
 	constructor() {
 		super();
 	}
@@ -8,10 +8,10 @@ class Settings extends React.Component {
 	render() {
 		return (
 			<div className="program-content">
-				Settings 5
+				program 0
 			</div>
 		)
 	}
 }
 
-export default Settings;
+export default Program;

@@ -1,25 +1,43 @@
 import React from 'react';
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import WeightCalculator from './weightCalculator';
+import WeightCalc from './weightCalc';
 
 class MainTextContent extends React.Component {
     constructor() {
         super();
+        this.state = {
+            toggle: false,
+        };
+        this.toggleCalc = this.toggleCalc.bind(this);
+    }
+
+    toggleCalc() {
+        this.setState({
+            toggle: !this.state.toggle
+        })
     }
 
     render() {
         return (
             <div>
-                <h1>Главный текстовый контент:</h1>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut cum, dignissimos ducimus eaque eius
-                iste itaque, optio quasi, quibusdam rem repudiandae sint? Aliquid architecto fugiat quasi quos unde
-                voluptatem?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam blanditiis
-                consequuntur cum eos explicabo facilis illo ipsum labore quidem, quo ratione rem similique sint
-                temporibus totam ut vel voluptatum.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam, dignissimos esse est
-                inventore maxime minus natus nisi quasi quibusdam suscipit voluptate? Autem consectetur, eius et fuga
-                pariatur sint voluptates?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci culpa illo ipsa iste, iure magnam
-                quas quasi reiciendis repellendus soluta tempora temporibus, unde voluptates. Ad dicta earum libero qui
-                voluptatem.
+                <div className="top-content">
+                    <h1 className="title">We know the best way</h1>
+                    <h1 className="title bottom-title">to look perfect</h1>
+                    <p>Онлайн-программа похудения от топ-тренеров. 12 недель. Тренировки, меню, рецепты, уход за собой, мотивация!</p>
+                    {
+                    this.state.toggle ? <WeightCalc close={this.toggleCalc}/> :
+                        <div className="calculator-btn">
+                            <button onClick={() => {
+                                this.toggleCalc()
+                            }}>Рассчитать идеальный вес!
+                            </button>
+                        </div>
+                    } 
+                </div>
+                <div className="bottom-content">
+                    <Link to="/signup">Начать сейчас!</Link>
+                </div>
             </div>
         )
     }
