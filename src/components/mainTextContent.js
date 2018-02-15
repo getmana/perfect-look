@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
-import WeightCalculator from './weightCalculator';
 import WeightCalc from './weightCalc';
 
 class MainTextContent extends React.Component {

@@ -11,6 +11,8 @@ class Account extends React.Component {
 
 
     render() {
+        const name = this.props.match.params.name;
+        console.log(name);
         return (
             <div className="account-page">
                 <AccountHeader />
